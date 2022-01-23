@@ -9,3 +9,4 @@ I will not be accepting pull requests.
 
 ## Acknowledgements
 * Skillcrush
+* Prawn PDF Library

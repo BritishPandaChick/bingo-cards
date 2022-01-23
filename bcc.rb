@@ -1,3 +1,5 @@
+require "prawn"
+
 # Align headers based on the number of digits 
 def align(num)
     if num < 10
@@ -37,3 +39,20 @@ puts g_col.inspect
 puts o_col.inspect 
 
 puts bingo_card
+
+# Array of letters
+header = ["B", "I", "N", "G", "O"]
+
+# Define grid in our document
+Prawn::Document.generate("bingo.pdf") do 
+    define_grid(columns: 5, rows: 6)
+    #grid.show_all
+
+    header.each_with_index do |char, i|
+        # Access the first box
+        grid(0, i).bounding_box do 
+            stroke_bounds
+            text char, align: :center, valign: :center, size: 50, style: :bold
+        end
+    end
+end
